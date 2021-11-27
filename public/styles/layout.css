@@ -35,6 +35,8 @@ nav {
     height: 120px;
     background-color: #4056a1;
     padding: 0px 1.5em;
+    position: absolute;
+    top: 0;
 }
 
 .logo-title {

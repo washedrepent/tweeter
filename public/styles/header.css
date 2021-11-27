@@ -1,0 +1,18 @@
+header {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #c2e4ed;
+    background-image: url("https://www.transparenttextures.com/patterns/cardboard.png");
+    color: #fff;
+}
+
+header div img {
+}
+
+header div h2 {
+    font-size: 1.5em;
+}
