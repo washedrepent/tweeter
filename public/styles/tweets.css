@@ -67,8 +67,8 @@
 .tweet-foot-icons {
     display: flex;
     gap: 0.5em;
-}
-
-.tweet-foot-icons i:hover {
     color: #4055a1;
+}
+.tweet-foot-icons i:hover {
+    color: #7a560a;
 }
