@@ -1,10 +1,10 @@
 $(document).ready(function () {
     //count the number of characters in the textarea
     $("#tweet-text").keyup(function () {
-        var input = $(this);
-        var counter = input.siblings("div").children("output");
+        let input = $(this);
+        let counter = input.siblings("div").children("output");
 
-        var text_length = input.val().length;
+        let text_length = input.val().length;
 
         if (text_length > 140) {
             counter.addClass("invalid");
