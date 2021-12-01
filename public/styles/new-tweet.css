@@ -57,3 +57,7 @@
     font-family: "Bungee";
     padding: 0 0.3em;
 }
+
+.invalid {
+    color: red;
+}
