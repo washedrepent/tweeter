@@ -34,6 +34,11 @@ let createTweetElement = (tweet) => {
 };
 
 const renderTweets = function (tweets) {
+    //order the tweets by date
+    tweets.sort(function (tweetA, tweetB) {
+        return new Date(tweetB.created_at) - new Date(tweetA.created_at);
+    });
+
     // loops through tweets
     for (let i = 0; i < tweets.length; i++) {
         //calls createTweetElement to format each tweet and append to the the tweets container
@@ -47,6 +52,20 @@ const loadTweets = function () {
         console.log(data);
         // render the tweets
         renderTweets(data);
+    });
+};
+
+//add new tweet to the dom
+const newTweet = function () {
+    //get the tweets  from the textarea
+    $.get("/tweets", function (tweets) {
+        //order the tweets by date
+        tweets.sort(function (tweetA, tweetB) {
+            return new Date(tweetB.created_at) - new Date(tweetA.created_at);
+        });
+
+        //prepend the new tweet to the tweets container
+        $("#tweets-container").prepend(createTweetElement(tweets[0]));
     });
 };
 
@@ -98,6 +117,8 @@ $(document).ready(() => {
                             console.log("Success", data);
                             //clear out the form data
                             $tweetText.val("");
+                            //add the new tweet to the dom
+                            newTweet();
                         } else {
                             console.log("Error", error);
                         }

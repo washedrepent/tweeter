@@ -11,7 +11,7 @@
 .tweet {
     color: #555149;
     border: 5px solid #555149;
-    padding: 0.3em 0.3em 0.5em 0.3em;
+    padding: 0.3em 0.3em 1em 0.3em;
     width: 100%;
 }
 
@@ -33,7 +33,7 @@
 .tweet header span {
     display: flex;
     align-items: center;
-    gap: 0.5em;
+    gap: 0.5rem;
 }
 .tweet header span img {
     width: 40px;
@@ -51,6 +51,7 @@
     font-size: 0.8em;
     font-weight: bold;
     padding: 0 1em;
+    margin: 1.3em 0;
 }
 .tweet footer {
     display: flex;
@@ -61,7 +62,7 @@
     height: auto;
     color: #555149;
     padding: 0 1em;
-    margin-top: 0.5em;
+    margin-top: 1em;
     font-size: 0.6em;
     font-weight: bold;
 }
