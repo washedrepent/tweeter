@@ -21,7 +21,6 @@
     resize: none;
     background: transparent;
     border-bottom: 5px solid #555149;
-    height: 50px;
 }
 #tweet-text:focus {
     outline: none;
@@ -58,4 +57,22 @@
 
 .invalid {
     color: red;
+}
+
+.form-error {
+    margin: 0;
+    padding: 0;
+}
+
+.form-error p {
+    display: none;
+    font-size: 0.8em;
+    font-family: "Bungee";
+    font-weight: bold;
+    padding: 0.5em;
+    border: 3px solid red;
+    width: 100%;
+    text-align: center;
+    color: red;
+    margin: 0;
 }

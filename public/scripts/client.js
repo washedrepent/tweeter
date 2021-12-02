@@ -98,10 +98,16 @@ $(document).ready(() => {
                 $tweetText.val() === "" ||
                 $tweetText.val().length === 0
             ) {
-                alert("Please enter a tweet!");
+                $(".form-error p").text(
+                    "The tweet box cannot be empty, try typing something into it!"
+                );
                 valid = false;
+                $(".form-error p").show();
             } else if ($tweetText.val().length > 140) {
-                alert("Your tweet is too long!");
+                $(".form-error p").text(
+                    "Your tweet is too long. Try something 140 chars or less!"
+                );
+                $(".form-error p").show();
                 valid = false;
             }
 
@@ -132,6 +138,7 @@ $(document).ready(() => {
                                 .siblings("div")
                                 .children("output")
                                 .text(140);
+                            $(".form-error").hide();
                         } else {
                             console.log("Error", error);
                         }

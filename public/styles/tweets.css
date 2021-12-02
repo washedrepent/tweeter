@@ -45,6 +45,8 @@
 
 .tweet-body {
     border-bottom: 5px solid #555149;
+    word-break: break-all;
+    white-space: normal;
 }
 .tweet-body p {
     color: #555149;
