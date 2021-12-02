@@ -5,7 +5,8 @@ nav {
     width: 100%;
     color: #fff;
     height: 120px;
-    background-color: #4056a1;
+    background-color: #008714;
+    background-image: url("https://www.transparenttextures.com/patterns/cardboard.png");
     padding: 0px 1.5em;
     position: fixed;
     top: 0;
@@ -26,5 +27,15 @@ nav {
 }
 
 .right-nav i {
-    color: #e93b20;
+    color: #000;
+}
+
+@media screen and (min-width: 1024px) {
+    nav {
+        background-color: #4056a1;
+        background-image: none;
+    }
+    .right-nav i {
+        color: #e93b20;
+    }
 }

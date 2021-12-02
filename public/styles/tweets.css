@@ -5,7 +5,7 @@
     align-items: center;
     margin: 20px 0;
     color: #555149;
-    gap: 20px;
+    gap: 2em;
 }
 
 .tweet {
@@ -76,4 +76,8 @@
 }
 .tweet-foot-icons i:hover {
     color: #7a560a;
+}
+
+//media queries for desktop larger than 1024px
+@media screen and (min-width: 1024px) {
 }
