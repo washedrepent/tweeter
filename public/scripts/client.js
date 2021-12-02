@@ -36,11 +36,8 @@ let createTweetElement = (tweet) => {
 const renderTweets = function (tweets) {
     // loops through tweets
     for (let i = 0; i < tweets.length; i++) {
-        let $newTweet = createTweetElement(tweets[i]);
-        console.log($newTweet);
-
         //calls createTweetElement to format each tweet and append to the the tweets container
-        $("#tweets-container").append($newTweet);
+        $("#tweets-container").append(createTweetElement(tweets[i]));
     }
 };
 
@@ -73,4 +70,36 @@ const data = [
 //wait for the document to be ready, then render the tweets
 $(document).ready(() => {
     renderTweets(data);
+
+    $(function () {
+        const $form = $(".new-tweet form");
+
+        // event listener for submit button
+        $form.on("submit", function (event) {
+            event.preventDefault();
+
+            //serialize the form data
+            let data = $form.serialize();
+
+            $.ajax({
+                type: "POST",
+                url: "/tweets/",
+                dataType: "json",
+                data: data,
+                complete: function (data) {
+                    //get status code
+                    let status = data.status;
+                    //if status is 201, then the tweet was created successfully
+                    if (status === 201) {
+                        console.log("Success", data);
+                        //clear out the form data
+                        $("#tweet-text").val("");
+                        $("#tweet-text").html("");
+                    } else {
+                        console.log("Error", error);
+                    }
+                },
+            });
+        });
+    });
 });
