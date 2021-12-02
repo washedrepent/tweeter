@@ -60,29 +60,50 @@ $(document).ready(() => {
         // event listener for submit button
         $form.on("submit", function (event) {
             event.preventDefault();
+            let valid = true;
 
-            //serialize the form data
-            let data = $form.serialize();
+            //get the tweet text from the textarea
+            let $tweetText = $("#tweet-text");
 
-            $.ajax({
-                type: "POST",
-                url: "/tweets/",
-                dataType: "json",
-                data: data,
-                complete: function (data) {
-                    //get status code
-                    let status = data.status;
-                    //if status is 201, then the tweet was created successfully
-                    if (status === 201) {
-                        console.log("Success", data);
-                        //clear out the form data
-                        $("#tweet-text").val("");
-                        $("#tweet-text").html("");
-                    } else {
-                        console.log("Error", error);
-                    }
-                },
-            });
+            //check if the tweet is empty or too long
+            if (
+                $tweetText.val() === undefined ||
+                $tweetText.val() === null ||
+                $tweetText.val() === "" ||
+                $tweetText.val().length === 0
+            ) {
+                alert("Please enter a tweet!");
+                valid = false;
+            } else if ($tweetText.val().length > 140) {
+                alert("Your tweet is too long!");
+                valid = false;
+            }
+
+            //if the tweet is valid, send it to the server
+            if (valid) {
+                //serialize the form data
+                let data = $form.serialize();
+
+                //make a post request to the server
+                $.ajax({
+                    type: "POST",
+                    url: "/tweets/",
+                    dataType: "json",
+                    data: data,
+                    complete: function (data) {
+                        //get status code
+                        let status = data.status;
+                        //if status is 201, then the tweet was created successfully
+                        if (status === 201) {
+                            console.log("Success", data);
+                            //clear out the form data
+                            $tweetText.val("");
+                        } else {
+                            console.log("Error", error);
+                        }
+                    },
+                });
+            }
         });
     });
 });
