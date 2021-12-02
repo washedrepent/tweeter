@@ -127,7 +127,6 @@ $(document).ready(() => {
                         let status = data.status;
                         //if status is 201, then the tweet was created successfully
                         if (status === 201) {
-                            console.log("Success", data);
                             //clear out the form data
                             $tweetText.val("");
                             //add the new tweet to the dom
@@ -140,7 +139,17 @@ $(document).ready(() => {
                                 .text(140);
                             $(".form-error").hide();
                         } else {
-                            console.log("Error", error);
+                            //print error message to console
+                            console.error(
+                                "Error With AJAX POST Request:",
+                                data
+                            );
+
+                            //show user there was an error
+                            $(".form-error p").text(
+                                "Something went Wrong, Check the console for more details!"
+                            );
+                            $(".form-error").show();
                         }
                     },
                 });
