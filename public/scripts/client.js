@@ -3,7 +3,14 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+};
+
 let createTweetElement = (tweet) => {
+    //escape the tweet text
     let $newTweet = `<article class="tweet">
         <header>
             <span class="tweet-author">
@@ -14,7 +21,7 @@ let createTweetElement = (tweet) => {
         </header>
         <div class="tweet-body">
             <p>
-               ${tweet.content.text}
+               ${escape(tweet.content.text)}
             </p>
         </div>
         <footer>
@@ -119,6 +126,12 @@ $(document).ready(() => {
                             $tweetText.val("");
                             //add the new tweet to the dom
                             newTweet();
+
+                            //reset the counter
+                            $("#tweet-text")
+                                .siblings("div")
+                                .children("output")
+                                .text(140);
                         } else {
                             console.log("Error", error);
                         }
