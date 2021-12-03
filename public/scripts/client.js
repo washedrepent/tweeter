@@ -76,84 +76,87 @@ const newTweet = function () {
     });
 };
 
-//wait for the document to be ready, then render the tweets
+//wait for the document to be ready before running any jQuery functions
 $(document).ready(() => {
+    //load the tweets from the server
     loadTweets();
 
-    $(function () {
-        const $form = $(".new-tweet form");
+    //get the form
+    const $form = $(".new-tweet form");
 
-        // event listener for submit button
-        $form.on("submit", function (event) {
-            event.preventDefault();
-            let valid = true;
+    // event listener for submit button
+    $form.on("submit", function (event) {
+        event.preventDefault();
+        let valid = true;
 
-            //get the tweet text from the textarea
-            let $tweetText = $("#tweet-text");
+        //get the tweet text from the textarea
+        let $tweetText = $("#tweet-text");
 
-            //check if the tweet is empty or too long
-            if (
-                $tweetText.val() === undefined ||
-                $tweetText.val() === null ||
-                $tweetText.val() === "" ||
-                $tweetText.val().length === 0
-            ) {
-                $(".form-error p").text(
-                    "The tweet box cannot be empty, try typing something into it!"
-                );
-                valid = false;
-                $(".form-error p").show();
-            } else if ($tweetText.val().length > 140) {
-                $(".form-error p").text(
-                    "Your tweet is too long. Try something 140 chars or less!"
-                );
-                $(".form-error p").show();
-                valid = false;
-            }
+        //check if the tweet is empty or too long
+        if (
+            $tweetText.val() === undefined ||
+            $tweetText.val() === null ||
+            $tweetText.val() === "" ||
+            $tweetText.val().length === 0
+        ) {
+            $(".form-error p").text(
+                "The tweet box cannot be empty, try typing something into it!"
+            );
+            valid = false;
+            $(".form-error p").show();
+        } else if ($tweetText.val().length > 140) {
+            $(".form-error p").text(
+                "Your tweet is too long. Try something 140 chars or less!"
+            );
+            $(".form-error p").show();
+            valid = false;
+        }
 
-            //if the tweet is valid, send it to the server
-            if (valid) {
-                //serialize the form data
-                let data = $form.serialize();
+        //if the tweet is valid, send it to the server
+        if (valid) {
+            //serialize the form data
+            let data = $form.serialize();
 
-                //make a post request to the server
-                $.ajax({
-                    type: "POST",
-                    url: "/tweets/",
-                    dataType: "json",
-                    data: data,
-                    complete: function (data) {
-                        //get status code
-                        let status = data.status;
-                        //if status is 201, then the tweet was created successfully
-                        if (status === 201) {
-                            //clear out the form data
-                            $tweetText.val("");
-                            //add the new tweet to the dom
-                            newTweet();
+            //make a post request to the server
+            $.ajax({
+                type: "POST",
+                url: "/tweets/",
+                dataType: "json",
+                data: data,
+                complete: function (data) {
+                    //get status code
+                    let status = data.status;
+                    //if status is 201, then the tweet was created successfully
+                    if (status === 201) {
+                        //clear out the form data
+                        $tweetText.val("");
+                        //add the new tweet to the dom
+                        newTweet();
 
-                            //reset the counter
-                            $("#tweet-text")
-                                .siblings("div")
-                                .children("output")
-                                .text(140);
-                            $(".form-error").hide();
-                        } else {
-                            //print error message to console
-                            console.error(
-                                "Error With AJAX POST Request:",
-                                data
-                            );
+                        //reset the counter
+                        $("#tweet-text")
+                            .siblings("div")
+                            .children("output")
+                            .text(140);
+                        $(".form-error p").hide();
+                    } else {
+                        //print error message to console
+                        console.error("Error With AJAX POST Request:", data);
 
-                            //show user there was an error
-                            $(".form-error p").text(
-                                "Something went Wrong, Check the console for more details!"
-                            );
-                            $(".form-error").show();
-                        }
-                    },
-                });
-            }
-        });
+                        //show user there was an error
+                        $(".form-error p").text(
+                            "Something went Wrong, Check the console for more details!"
+                        );
+                        $(".form-error").show();
+                    }
+                },
+            });
+        }
+    });
+
+    //click event on the new tweet button
+    $(".right-nav").on("click", function () {
+        //toggle the new tweet form
+        $(".new-tweet").toggle(300, "linear");
     });
 });
