@@ -13,6 +13,9 @@ Tweeter is a simple, single-page Twitter clone, Created for Lighthouse Labs to s
 
 ## Screen Shots
 
+!["Desktop View"](https://github.com/washedrepent/tweeter/blob/master/docs/tweeter-1.png)
+!["Mobile View"](https://github.com/washedrepent/tweeter/blob/master/docs/tweeter-2.png)
+
 ## Getting Started
 
 1.  [Create](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) a new repository using this repository as a template.
