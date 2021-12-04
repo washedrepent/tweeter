@@ -98,6 +98,9 @@ $(document).ready(() => {
         //get the tweet text from the textarea
         let $tweetText = $("#tweet-text");
 
+        //hide the error message
+        $(".form-error p").hide(200, "linear");
+
         //validate the tweet text
         //check if the tweet is empty or too long
         if (
@@ -145,7 +148,6 @@ $(document).ready(() => {
                             .siblings("div")
                             .children("output")
                             .text(140);
-                        $(".form-error p").hide(200, "linear");
                     } else {
                         //print error message to console
                         console.error("Error With AJAX POST Request:", data);
