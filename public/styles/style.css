@@ -1,0 +1,318 @@
+/**************************
+Set global variables here
+***************************/
+/*
+ * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ * https://css-tricks.com/international-box-sizing-awareness-day/
+ * Do not modify these two selectors, please
+ */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/*
+ * Global layout stuff
+ */
+body {
+  color: #545149;
+  background-color: #f4f1ec;
+  font-size: 24px;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+/*
+ * Additional CSS can be defined below or in other CSS files, as per instructions
+ */
+main {
+  width: 90%;
+  margin: 0 auto;
+  background-color: #f4f1ec;
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 240px;
+  }
+
+  main {
+    width: 100%;
+    padding-right: 2.5em;
+  }
+}
+.body-header {
+  padding-top: 120px;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #008714;
+  background-image: url("https://www.transparenttextures.com/patterns/cardboard.png");
+  color: #fff;
+}
+
+.header-container div h2 {
+  font-size: 1.5em;
+  display: inline-block;
+}
+.header-container div h2:nth-child(2) {
+  font-size: 1.5em;
+  font-weight: normal;
+}
+
+@media screen and (min-width: 1024px) {
+  .body-header {
+    width: 100%;
+    padding-left: 2.5em;
+    padding-right: 4em;
+    padding-top: 0px;
+  }
+
+  .header-container {
+    max-width: 600px;
+    padding-top: 1.5em;
+    padding-bottom: 0.5em;
+    justify-content: center;
+    height: auto;
+  }
+
+  .header-container br {
+    display: none;
+  }
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: #fff;
+  height: 120px;
+  background-color: #008714;
+  background-image: url("https://www.transparenttextures.com/patterns/cardboard.png");
+  padding: 0px 1.5em;
+  position: fixed;
+  top: 0;
+}
+
+.icon-scroll-up {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px;
+  color: #008714;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 2px solid #008714;
+  border-radius: 5px;
+}
+
+.logo-title {
+  font-family: "Bungee";
+  font-size: 1.5em;
+}
+
+.right-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.right-nav p {
+  margin: 0;
+}
+.right-nav i {
+  color: #000;
+}
+
+@media screen and (min-width: 1024px) {
+  nav {
+    background-color: #4056a1;
+    background-image: none;
+  }
+
+  .icon-scroll-up {
+    color: #4056a1;
+    border: 2px solid #4056a1;
+  }
+
+  .right-nav i {
+    color: #e93b20;
+  }
+}
+.new-tweet {
+  display: none;
+  width: 100%;
+  margin: 1.3em 0;
+}
+
+.new-tweet form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #555149;
+}
+.new-tweet form label {
+  width: 100%;
+  font-weight: 600;
+  font-size: 1em;
+}
+.new-tweet button {
+  color: #fff;
+  background-color: #4056a1;
+  border: none;
+  font-family: "Bungee";
+  font-size: 0.8em;
+  font-weight: normal;
+  padding: 5px 10px;
+}
+.new-tweet div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.7em 0;
+}
+
+#tweet-text {
+  width: 100%;
+  border: none;
+  resize: none;
+  background: transparent;
+  border-bottom: 5px solid #555149;
+}
+
+#tweet-text:focus {
+  outline: none;
+}
+#tweet-text:focus-visible {
+  outline: none;
+}
+
+.counter {
+  font-size: 0.8em;
+  color: #555149;
+  font-weight: bold;
+  font-family: "Bungee";
+  padding: 0 0.3em;
+}
+
+.invalid {
+  color: red;
+}
+
+.form-error {
+  margin: 0;
+  padding: 0;
+}
+
+.form-error p {
+  display: none;
+  font-size: 0.8em;
+  font-family: "Bungee";
+  font-weight: bold;
+  padding: 0.5em;
+  border: 3px solid red;
+  width: 100%;
+  text-align: center;
+  color: red;
+  margin: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .new-tweet {
+    margin: 0;
+  }
+}
+#tweets-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  color: #555149;
+  gap: 2em;
+}
+
+.tweet-foot-icons {
+  display: flex;
+  gap: 0.5em;
+  color: #4056a1;
+}
+
+.tweet-foot-icons i:hover {
+  color: #7a560a;
+}
+
+.tweet {
+  color: #555149;
+  border: 5px solid #555149;
+  padding: 0.3em 0.3em 1em 0.3em;
+  width: 100%;
+}
+
+.tweet:hover {
+  box-shadow: 5px 5px 0px #c9cae2;
+}
+.tweet header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  height: auto;
+  color: #555149;
+  padding: 0 0.5em;
+}
+.tweet header span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.tweet header span img {
+  width: 40px;
+}
+.tweet header h2 {
+  color: #ccd5e6;
+  font-size: 1em;
+}
+.tweet footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  height: auto;
+  color: #555149;
+  padding: 0 1em;
+  margin-top: 1em;
+  font-size: 0.6em;
+  font-weight: bold;
+}
+
+.tweet-body {
+  border-bottom: 5px solid #555149;
+  word-break: break-all;
+  white-space: normal;
+}
+
+.tweet-body p {
+  color: #555149;
+  font-size: 0.8em;
+  font-weight: bold;
+  padding: 0 1em;
+  margin: 1.3em 0;
+}

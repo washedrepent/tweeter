@@ -1,8 +1,10 @@
+//_layout.scss
 /*
  * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+@use "utilities";
 html {
     box-sizing: border-box;
 }
@@ -15,12 +17,11 @@ html {
 /*
  * Global layout stuff
  */
-
 body {
-    color: #545149;
-    background-color: #f4f1ec;
+    color: utilities.$body-text-color;
+    background-color: utilities.$body-bg-color;
     font-size: 24px;
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: utilities.$primary-font;
 }
 
 /*
@@ -29,18 +30,17 @@ body {
 main {
     width: 90%;
     margin: 0 auto;
-    background-color: #f4f1ec;
+    background-color: utilities.$body-bg-color;
 }
 
 @media screen and (min-width: 1024px) {
     body {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        padding-top: 120px;
+        padding-top: 240px;
     }
     main {
         width: 100%;
-        margin-right: 2.5em;
-        margin-top: 60px;
+        padding-right: 2.5em;
     }
 }

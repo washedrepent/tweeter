@@ -1,0 +1,89 @@
+//_tweets.scss
+@use "utilities";
+#tweets-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    color: utilities.$tweet-container-text-color;
+    gap: 2em;
+}
+
+.tweet-foot-icons {
+    display: flex;
+    gap: 0.5em;
+    color: utilities.$tweet-footer-icon-color;
+}
+.tweet-foot-icons i:hover {
+    color: utilities.$tweet-footer-icon-hover-color;
+}
+
+.tweet {
+    color: utilities.$tweet-container-text-color;
+    border: 5px solid utilities.$tweet-container-text-color;
+    padding: 0.3em 0.3em 1em 0.3em;
+    width: 100%;
+}
+
+.tweet {
+    &:hover {
+        box-shadow: 5px 5px 0px utilities.$tweet-hover-color;
+    }
+
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background: none;
+        height: auto;
+        color: utilities.$tweet-container-text-color;
+        padding: 0 0.5em;
+    }
+
+    header {
+        span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        span {
+            img {
+                width: 40px;
+            }
+        }
+        h2 {
+            color: utilities.$tweet-handle-color;
+            font-size: 1em;
+        }
+    }
+    footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background: none;
+        height: auto;
+        color: utilities.$tweet-container-text-color;
+        padding: 0 1em;
+        margin-top: 1em;
+        font-size: 0.6em;
+        font-weight: bold;
+    }
+}
+
+.tweet-body {
+    border-bottom: 5px solid utilities.$tweet-container-text-color;
+    word-break: break-all;
+    white-space: normal;
+}
+.tweet-body {
+    p {
+        color: utilities.$tweet-container-text-color;
+        font-size: 0.8em;
+        font-weight: bold;
+        padding: 0 1em;
+        margin: 1.3em 0;
+    }
+}

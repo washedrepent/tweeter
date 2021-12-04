@@ -1,0 +1,60 @@
+//_nav.scss
+@use "utilities";
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: utilities.$primary-text-color;
+    height: 120px;
+    background-color: utilities.$primary-color;
+    background-image: url("https://www.transparenttextures.com/patterns/cardboard.png");
+    padding: 0px 1.5em;
+    position: fixed;
+    top: 0;
+}
+
+.icon-scroll-up {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: 10px;
+    color: utilities.$primary-color;
+    background-color: utilities.$scroll-top-bg-color;
+    border: 2px solid utilities.$primary-color;
+    border-radius: 5px;
+}
+
+.logo-title {
+    font-family: utilities.$secondary-font;
+    font-size: 1.5em;
+}
+
+.right-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.right-nav {
+    p {
+        margin: 0;
+    }
+    i {
+        color: utilities.$primary-icon-color;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    nav {
+        background-color: utilities.$secondary-color;
+        background-image: none;
+    }
+    .icon-scroll-up {
+        color: utilities.$secondary-color;
+        border: 2px solid utilities.$secondary-color;
+    }
+    .right-nav i {
+        color: utilities.$secondary-icon-color;
+    }
+}

@@ -1,5 +1,7 @@
+//_header.scss
+@use "utilities";
 .body-header {
-    margin-top: 120px;
+    padding-top: 120px;
 }
 .header-container {
     display: flex;
@@ -8,21 +10,21 @@
     width: 100%;
     justify-content: flex-end;
     align-items: center;
-    background-color: #008714;
+    background-color: utilities.$primary-color;
     background-image: url("https://www.transparenttextures.com/patterns/cardboard.png");
-    color: #fff;
+    color: utilities.$primary-text-color;
 }
-.header-container div img {
-}
-
-.header-container div h2 {
-    font-size: 1.5em;
-    display: inline-block;
-}
-
-.header-container div h2:nth-child(2) {
-    font-size: 1.5em;
-    font-weight: normal;
+.header-container {
+    div {
+        h2 {
+            font-size: 1.5em;
+            display: inline-block;
+        }
+        h2:nth-child(2) {
+            font-size: 1.5em;
+            font-weight: normal;
+        }
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -30,6 +32,7 @@
         width: 100%;
         padding-left: 2.5em;
         padding-right: 4em;
+        padding-top: 0px;
     }
     .header-container {
         max-width: 600px;

@@ -1,0 +1,94 @@
+//_new-tweets.scss
+@use "utilities";
+
+.new-tweet {
+    display: none;
+    width: 100%;
+    margin: 1.3em 0;
+}
+
+.new-tweet {
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        flex-wrap: wrap;
+        color: utilities.$tweet-container-text-color;
+    }
+    form {
+        label {
+            width: 100%;
+            font-weight: 600;
+            font-size: 1em;
+        }
+    }
+    button {
+        color: utilities.$primary-text-color;
+        background-color: utilities.$secondary-color;
+        border: none;
+        font-family: "Bungee";
+        font-size: 0.8em;
+        font-weight: normal;
+        padding: 5px 10px;
+    }
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0.7em 0;
+    }
+}
+#tweet-text {
+    width: 100%;
+    border: none;
+    resize: none;
+    background: transparent;
+    border-bottom: 5px solid utilities.$tweet-container-text-color;
+}
+#tweet-text {
+    &:focus {
+        outline: none;
+    }
+    &:focus-visible {
+        outline: none;
+    }
+}
+
+.counter {
+    font-size: 0.8em;
+    color: utilities.$tweet-container-text-color;
+    font-weight: bold;
+    font-family: "Bungee";
+    padding: 0 0.3em;
+}
+
+.invalid {
+    color: utilities.$invalid-color;
+}
+
+.form-error {
+    margin: 0;
+    padding: 0;
+}
+.form-error {
+    p {
+        display: none;
+        font-size: 0.8em;
+        font-family: "Bungee";
+        font-weight: bold;
+        padding: 0.5em;
+        border: 3px solid utilities.$invalid-color;
+        width: 100%;
+        text-align: center;
+        color: utilities.$invalid-color;
+        margin: 0;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .new-tweet {
+        margin: 0;
+    }
+}

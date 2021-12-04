@@ -9,12 +9,13 @@ const escape = function (str) {
     return div.innerHTML;
 };
 
+//formats the tweet and returns the html
 let createTweetElement = (tweet) => {
     //escape the tweet text
     let $newTweet = `<article class="tweet">
         <header>
             <span class="tweet-author">
-                <img src="/images/profile-hex.png" />
+                <img src="${tweet.user.avatars}" />
                 ${tweet.user.name}
             </span>
             <h2>${tweet.user.handle}</h2>
@@ -40,6 +41,7 @@ let createTweetElement = (tweet) => {
     return $newTweet;
 };
 
+//render all the tweets
 const renderTweets = function (tweets) {
     //order the tweets by date
     tweets.sort(function (tweetA, tweetB) {
@@ -53,6 +55,7 @@ const renderTweets = function (tweets) {
     }
 };
 
+//load the tweets from the api
 const loadTweets = function () {
     // get the tweets from the server
     $.get("/tweets", function (data) {
@@ -84,14 +87,18 @@ $(document).ready(() => {
     //get the form
     const $form = $(".new-tweet form");
 
-    // event listener for submit button
+    // event listener on form submission
     $form.on("submit", function (event) {
+        //prevent default form submission
         event.preventDefault();
+
+        //flag for validation
         let valid = true;
 
         //get the tweet text from the textarea
         let $tweetText = $("#tweet-text");
 
+        //validate the tweet text
         //check if the tweet is empty or too long
         if (
             $tweetText.val() === undefined ||
@@ -103,12 +110,12 @@ $(document).ready(() => {
                 "The tweet box cannot be empty, try typing something into it!"
             );
             valid = false;
-            $(".form-error p").show();
+            $(".form-error p").show(200, "linear");
         } else if ($tweetText.val().length > 140) {
             $(".form-error p").text(
                 "Your tweet is too long. Try something 140 chars or less!"
             );
-            $(".form-error p").show();
+            $(".form-error p").show(200, "linear");
             valid = false;
         }
 
@@ -138,7 +145,7 @@ $(document).ready(() => {
                             .siblings("div")
                             .children("output")
                             .text(140);
-                        $(".form-error p").hide();
+                        $(".form-error p").hide(200, "linear");
                     } else {
                         //print error message to console
                         console.error("Error With AJAX POST Request:", data);
@@ -147,7 +154,7 @@ $(document).ready(() => {
                         $(".form-error p").text(
                             "Something went Wrong, Check the console for more details!"
                         );
-                        $(".form-error").show();
+                        $(".form-error").show(200, "linear");
                     }
                 },
             });
@@ -158,5 +165,27 @@ $(document).ready(() => {
     $(".right-nav").on("click", function () {
         //toggle the new tweet form
         $(".new-tweet").toggle(300, "linear");
+        $("#tweet-text").focus();
+    });
+
+    //check if scrolling
+    $(window).scroll(function () {
+        //if moving down show icon
+        if ($(window).scrollTop() > 20) {
+            $(".icon-scroll-up").show(100, "linear");
+        } else {
+            $(".icon-scroll-up").hide(100, "linear");
+        }
+    });
+
+    //scroll back to top when scroll up icon is clicked
+    $(".icon-scroll-up").on("click", function () {
+        $("html, body").animate(
+            {
+                scrollTop: 0,
+            },
+            500,
+            "linear"
+        );
     });
 });
