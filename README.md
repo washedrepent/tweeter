@@ -13,7 +13,11 @@ Tweeter is a simple, single-page Twitter clone, Created for Lighthouse Labs to s
 
 ## Screen Shots
 
+**Desktop View**
+
 !["Desktop View"](https://github.com/washedrepent/tweeter/blob/master/docs/tweeter-1.png)
+
+**Mobile View**
 !["Mobile View"](https://github.com/washedrepent/tweeter/blob/master/docs/tweeter-2.png)
 
 ## Getting Started
